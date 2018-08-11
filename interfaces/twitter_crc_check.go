@@ -3,7 +3,7 @@ package interfaces
 import "net/http"
 
 type TwitterCRCCheckUseCase interface {
-	Check(string) error
+	Check(string) string
 }
 
 type TwitterCRCCheckHandler struct {
