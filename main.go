@@ -4,19 +4,16 @@ import (
 	"net/http"
 	_ "net/http/pprof"
 
-	"github.com/takochuu/go-cleanarchitecture/infrastructure/repository"
-	"github.com/takochuu/go-cleanarchitecture/interfaces"
-	"github.com/takochuu/go-cleanarchitecture/usecase"
+	"github.com/takochuu/twitter-activity-api-boilerprate/interfaces"
+	"github.com/takochuu/twitter-activity-api-boilerprate/usecase"
 )
 
 func main() {
 
-	// TODO Router化
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		h := interfaces.UserHandler{}
-		u := repository.NewUserRepository()
-		h.UserUseCase = usecase.NewUserUseCase(u)
-		h.Create(res, req)
+		h := interfaces.TwitterCRCCheckHandler{}
+		h.TwitterCRCCheckUseCase = usecase.NewTwitterCRCCheckUseCase()
+		h.Check(res, req)
 	})
 
 	http.ListenAndServe(":16000", nil)
