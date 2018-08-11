@@ -3,7 +3,7 @@ package interfaces
 import "net/http"
 
 type TwitterCRCCheckUseCase interface {
-	Check() error
+	Check(string) error
 }
 
 type TwitterCRCCheckHandler struct {
@@ -11,5 +11,7 @@ type TwitterCRCCheckHandler struct {
 }
 
 func (h TwitterCRCCheckHandler) Check(res http.ResponseWriter, req *http.Request) {
-	h.TwitterCRCCheckUseCase.Check()
+	if token := req.FormValue("crc_token"); len(token) > 0 {
+		h.TwitterCRCCheckUseCase.Check(token)
+	}
 }
