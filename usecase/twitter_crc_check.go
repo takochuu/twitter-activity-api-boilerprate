@@ -9,14 +9,14 @@ import (
 type TwitterCRCCheckUseCase struct{}
 
 type TwitterCRCCheckInteractor interface {
-	Check(string) string
+	GenerateCRCToken(string) string
 }
 
 func NewTwitterCRCCheckUseCase() TwitterCRCCheckInteractor {
 	return &TwitterCRCCheckUseCase{}
 }
 
-func (u *TwitterCRCCheckUseCase) Check(crcToken string) string {
+func (u *TwitterCRCCheckUseCase) GenerateCRCToken(crcToken string) string {
 	cs := os.Getenv("PAIRS_TWITTER_BOT_CONSUMER_SECRET")
 	token := lib.CreateCRCToken(crcToken, cs)
 	return token

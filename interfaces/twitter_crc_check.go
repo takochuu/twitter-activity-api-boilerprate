@@ -16,8 +16,8 @@ func NewTwitterCRCCheckHandler() *TwitterCRCCheckHandler {
 	}
 }
 
-func (h TwitterCRCCheckHandler) Check(res http.ResponseWriter, req *http.Request) {
+func (h TwitterCRCCheckHandler) GenerateCRCToken(res http.ResponseWriter, req *http.Request) {
 	if token := req.FormValue("crc_token"); len(token) > 0 {
-		h.TwitterCRCCheckUseCase.Check(token)
+		h.TwitterCRCCheckUseCase.GenerateCRCToken(token)
 	}
 }

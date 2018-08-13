@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
+	http.HandleFunc("/crc_token", func(res http.ResponseWriter, req *http.Request) {
 		h := interfaces.NewTwitterCRCCheckHandler()
 		h.Check(res, req)
 	})
