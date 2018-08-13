@@ -8,11 +8,11 @@ import (
 
 type TwitterCRCCheckUseCase struct{}
 
-type TwitterCRCCheckInterface interface {
+type TwitterCRCCheckInteractor interface {
 	Check(string) string
 }
 
-func NewTwitterCRCCheckUseCase() TwitterCRCCheckInterface {
+func NewTwitterCRCCheckUseCase() TwitterCRCCheckInteractor {
 	return &TwitterCRCCheckUseCase{}
 }
 

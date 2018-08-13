@@ -1,13 +1,19 @@
 package interfaces
 
-import "net/http"
+import (
+	"net/http"
 
-type TwitterCRCCheckUseCase interface {
-	Check(string) string
-}
+	"github.com/takochuu/twitter-activity-api-boilerprate/usecase"
+)
 
 type TwitterCRCCheckHandler struct {
-	TwitterCRCCheckUseCase TwitterCRCCheckUseCase
+	TwitterCRCCheckUseCase usecase.TwitterCRCCheckInteractor
+}
+
+func NewTwitterCRCCheckHandler() *TwitterCRCCheckHandler {
+	return &TwitterCRCCheckHandler{
+		usecase.NewTwitterCRCCheckUseCase(),
+	}
 }
 
 func (h TwitterCRCCheckHandler) Check(res http.ResponseWriter, req *http.Request) {

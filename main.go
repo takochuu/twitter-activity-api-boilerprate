@@ -5,14 +5,12 @@ import (
 	_ "net/http/pprof"
 
 	"github.com/takochuu/twitter-activity-api-boilerprate/interfaces"
-	"github.com/takochuu/twitter-activity-api-boilerprate/usecase"
 )
 
 func main() {
 
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
-		h := interfaces.TwitterCRCCheckHandler{}
-		h.TwitterCRCCheckUseCase = usecase.NewTwitterCRCCheckUseCase()
+		h := interfaces.NewTwitterCRCCheckHandler()
 		h.Check(res, req)
 	})
 
