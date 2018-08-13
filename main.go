@@ -11,7 +11,7 @@ func main() {
 
 	http.HandleFunc("/crc_token", func(res http.ResponseWriter, req *http.Request) {
 		h := interfaces.NewTwitterCRCCheckHandler()
-		h.Check(res, req)
+		h.GenerateCRCToken(res, req)
 	})
 
 	http.ListenAndServe(":16000", nil)
