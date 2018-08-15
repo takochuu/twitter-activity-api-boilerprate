@@ -1,0 +1,31 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Twitter Boilerplate"
+host: "localhost:7070"
+basePath: "/"
+paths:
+  "/crc_token":
+    get:
+      summary: get generated hmac token
+      consumes:
+      - application/json
+      tags:
+      - twitter
+      parameters:
+      - name: "crc_token"
+        type: "string"
+        in: "query"
+        description: "Twitterから送られるToken"
+        required: true
+        format: "string"
+      responses:
+        200:
+          description: "成功時"
+          schema:
+            type: "object"
+            properties:
+              response_token:
+                type: "string"
+                format: "string"
