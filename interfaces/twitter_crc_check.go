@@ -22,6 +22,7 @@ func (h TwitterCRCCheckHandler) GenerateCRCToken(res http.ResponseWriter, req *h
 		token := h.TwitterCRCCheckUseCase.GenerateCRCToken(t)
 		r := response.NewTwitterCRCCheckResponse()
 		r.SetResponseToken(token)
-		r.JSON(res)
+		creater := response.NewResponseCreater(r)
+		creater.Handler.JSON(res)
 	}
 }

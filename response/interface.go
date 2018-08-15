@@ -2,6 +2,6 @@ package response
 
 import "net/http"
 
-type Response interface {
+type ResponseInterface interface {
 	JSON(res http.ResponseWriter)
 }
