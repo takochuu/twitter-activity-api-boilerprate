@@ -17,6 +17,6 @@ func NewTwitterCRCCheckUseCase() TwitterCRCCheckInteractor {
 }
 
 func (u *TwitterCRCCheckUseCase) GenerateCRCToken(crcToken string) string {
-	cs := os.Getenv("PAIRS_TWITTER_BOT_CONSUMER_SECRET")
+	cs := os.Getenv("TWITTER_CONSUMER_SECRET")
 	return lib.CreateCRCToken(crcToken, cs)
 }

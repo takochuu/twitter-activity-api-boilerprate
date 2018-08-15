@@ -1,6 +1,7 @@
 package response
 
+import "net/http"
+
 type Response interface {
-	JSON(data interface{})
-	GRPC(data interface{})
+	JSON(res http.ResponseWriter)
 }

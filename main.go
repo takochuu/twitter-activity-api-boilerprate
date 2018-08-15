@@ -11,7 +11,7 @@ import (
 func main() {
 
 	r := mux.NewRouter()
-	r.HandleFunc("/crc_token", func(res http.ResponseWriter, req *http.Request) {
+	r.HandleFunc("/crc_check", func(res http.ResponseWriter, req *http.Request) {
 		h := interfaces.NewTwitterCRCCheckHandler()
 		h.GenerateCRCToken(res, req)
 	}).Methods("GET")
